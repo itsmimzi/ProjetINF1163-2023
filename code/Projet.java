@@ -14,8 +14,8 @@ public class Projet {
     private Date dateFin;
     private Float nbrHeuresBudgetDiscipline;
 
-    ArrayList<Activite> listeActivites;
-    ArrayList<Employe> listeEmployes;
+    ArrayList<Activite> listeActivites = new ArrayList<>();
+    ArrayList<Employe> listeEmployes = new ArrayList<>();
 
 
     /**
@@ -38,6 +38,23 @@ public class Projet {
         this.nbrHeuresBudgetDiscipline = nbrHeuresBudgetDiscipline;
         this.listeActivites = listeActivites;
         this.listeEmployes = listeEmployes;
+    }
+
+    /**
+    * Construit un nouvel objet Projet avec les informations spécifiées.
+    *
+    * @param idProjet               L'identifiant unique du projet.
+    * @param nomProjet              Le nom du projet.
+    * @param dateDebut              La date de début du projet.
+    * @param dateFin                La date de fin du projet.
+    * @param nbrHeuresBudgetDiscipline Le nombre d'heures budgétaires par discipline pour le projet.
+    */
+    public Projet(int idProjet, String nomProjet, Date dateDebut, Date dateFin, Float nbrHeuresBudgetDiscipline) {
+        this.idProjet = idProjet;
+        this.nomProjet = nomProjet;
+        this.dateDebut = dateDebut;
+        this.dateFin = dateFin;
+        this.nbrHeuresBudgetDiscipline = nbrHeuresBudgetDiscipline;
     }
 
     /**
@@ -102,4 +119,3 @@ public class Projet {
     }
     
 }
-
