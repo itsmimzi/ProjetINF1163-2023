@@ -34,7 +34,7 @@ public class TauxHoraire {
      * @return Le taux horaire de base courant.
      */
     public float obtenirTauxBaseCourant() {
-        return tauxBase.get(tauxBase.size() - 1);
+        return tauxBase.getLast();
     }
 
     /**
@@ -43,6 +43,6 @@ public class TauxHoraire {
      * @return Le taux horaire supplémentaire courant.
      */
     public float obtenirTauxSupplementaireCourant() {
-        return tauxSupplementaire.get(tauxSupplementaire.size() - 1);
+        return tauxSupplementaire.getLast();
     }
 }
