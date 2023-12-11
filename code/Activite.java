@@ -15,7 +15,10 @@ public class Activite {
         this.heureDebut = heureDebut;
         this.heureFin = heureFin;
         this.disciplines = disciplines;
+        this.employé = employé;
     }
+
+    // Getters and setters
      public List<Discipline> getDisciplines() {
         return disciplines;
     }
