@@ -15,7 +15,39 @@ public class Activite {
         this.heureFin = heureFin;
         this.disciplines = disciplines;
     }
+     public List<Discipline> getDisciplines() {
+        return disciplines;
+    }
 
+    public void setDisciplines(List<Discipline> disciplines) {
+        this.disciplines = disciplines;
+    }
+
+    public Time getHeureDebut() {
+        return heureDebut;
+    }
+
+    public void setHeureDebut(Time heureDebut) {
+        this.heureDebut = heureDebut;
+    }
+
+    public Time getHeureFin() {
+        return heureFin;
+    }
+
+    public void setHeureFin(Time heureFin) {
+        this.heureFin = heureFin;
+    }
+
+    public Employé getEmployé() {
+        return employé;
+    }
+
+    public void setEmployé(Employé employé) {
+        this.employé = employé;
+    }
+
+    // Méthode pour obtenir le temps écoulé en millisecondes
     public float obtenirTempsEcouler(){
         float tempsEcouler = heureFin.getTime() -heureDebut.getTime();
         return (float)tempsEcouler / 3600000.0f;
