@@ -6,6 +6,7 @@ public class Activite {
     private String idActivite;
     private Time heureDebut;
     private Time heureFin;
+    private Employe employe // L'employé associé à cette activité
     ArrayList<Discipline> disciplines = new ArrayList<>(1);
 
 
