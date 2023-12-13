@@ -83,6 +83,24 @@ public class Employe {
         return tauxSupp;
     }
 
+    /** 
+     * Obtenir la liste des projets sur lesquels l'employé a travaillé.
+     * 
+     * @return Une liste de projets associés à l'employé.
+     */
+    public List<Projet> getProjetsTravailles(){
+        List<Projet> projetsTravailles = new ArrayList<>();
+
+        for(Activite activite : activites){
+            Projet projet = activite.getProjet();
+            if(projet != null && !projetsTravailles.contains(projet)){
+                projetsTravailles.add(projet);
+            }
+        }
+
+        return projetsTravailles;
+    }
+
     /**
      * Calculer le salaire de l'employé.
      * 
