@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "nom": "employé1",
+    "historiqueTauxHoraireBase": [20.0, 22.0, 25.0],
+    "tauxHoraireSupplementaire": 30.0,
+    "dateEmbauche": "2023-01-01",
+    "dateDepart": null,
+    "numAssuranceSocial": "123-456-789",
+    "poste": "Développeur"
+  },
+  {
+    "id": 2,
+    "nom": "employé2",
+    "historiqueTauxHoraireBase": [18.0, 20.0, 23.0],
+    "tauxHoraireSupplementaire": 28.0,
+    "dateEmbauche": "2023-02-01",
+    "dateDepart": null,
+    "numAssuranceSocial": "987-654-321",
+    "poste": "Testeur"
+  },
+  {
+    "id": 3,
+    "nom": "employé3",
+    "historiqueTauxHoraireBase": [25.0, 28.0, 30.0],
+    "tauxHoraireSupplementaire": 35.0,
+    "dateEmbauche": "2023-03-01",
+    "dateDepart": null,
+    "numAssuranceSocial": "456-789-012",
+    "poste": "Architecte"
+  }
+]
