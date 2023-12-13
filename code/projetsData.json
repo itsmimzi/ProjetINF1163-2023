@@ -32,4 +32,15 @@
     "heuresBudgetTest": 12.0,
     "heuresBudgetDeploiement": 6.0
   }
+  {
+    "idProjet": 4,
+    "nomProjet": "projet4",
+    "dateDebut": "2023-15-09",
+    "dateFin": "2023-10-20",
+    "heuresBudgetDesign1": 20.0,
+    "heuresBudgetDesign2": 20.0,
+    "heuresBudgetImplementation": 43.0,
+    "heuresBudgetTest": 15.0,
+    "heuresBudgetDeploiement": 7.0
+  }
 ]
