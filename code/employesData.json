@@ -12,7 +12,7 @@
   {
     "id": 2,
     "nom": "employé2",
-    "historiqueTauxHoraireBase": [18.0, 20.0, 23.0],
+    "historiqueTauxHoraireBase": [18.0, 20.0],
     "tauxHoraireSupplementaire": 28.0,
     "dateEmbauche": "2023-02-01",
     "dateDepart": null,
@@ -28,5 +28,15 @@
     "dateDepart": null,
     "numAssuranceSocial": "456-789-012",
     "poste": "Architecte"
+  }
+    {
+    "id": 4,
+    "nom": "employé4",
+    "historiqueTauxHoraireBase": [18.0, 20.0, 23.0],
+    "tauxHoraireSupplementaire": 35.0,
+    "dateEmbauche": "2022-07-01",
+    "dateDepart": null,
+    "numAssuranceSocial": "456-789-012",
+    "poste": "Testeur"
   }
 ]
