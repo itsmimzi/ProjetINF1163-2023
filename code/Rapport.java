@@ -15,40 +15,40 @@
 
 public class Rapport {
 
-        private String nomProjet;
-    private List<Activité> activités;
+    //     private String nomProjet;
+    // private List<Activité> activités;
 
-    public Rapport(String nomProjet, List<Activité> activités) {
-        this.nomProjet = nomProjet;
-        this.activités = activités;
-    }
+    // public Rapport(String nomProjet, List<Activité> activités) {
+    //     this.nomProjet = nomProjet;
+    //     this.activités = activités;
+    // }
 
-    // Getter et setter pour le nom du projet
-    public String getNomProjet() {
-        return nomProjet;
-    }
+    // // Getter et setter pour le nom du projet
+    // public String getNomProjet() {
+    //     return nomProjet;
+    // }
 
-    public void setNomProjet(String nomProjet) {
-        this.nomProjet = nomProjet;
-    }
+    // public void setNomProjet(String nomProjet) {
+    //     this.nomProjet = nomProjet;
+    // }
 
-    // Getter et setter pour la liste des activités
-    public List<Activité> getActivités() {
-        return activités;
-    }
+    // // Getter et setter pour la liste des activités
+    // public List<Activité> getActivités() {
+    //     return activités;
+    // }
 
-    public void setActivités(List<Activité> activités) {
-        this.activités = activités;
-    }
+    // public void setActivités(List<Activité> activités) {
+    //     this.activités = activités;
+    // }
 
-    // Méthode pour calculer la durée totale des activités en millisecondes
-    public long obtenirDuréeTotale() {
-        long duréeTotale = 0;
-        for (Activité activité : activités) {
-            duréeTotale += activité.obtenirTempsÉcoulé();
-        }
-        return duréeTotale;
-    }
+    // // Méthode pour calculer la durée totale des activités en millisecondes
+    // public long obtenirDuréeTotale() {
+    //     long duréeTotale = 0;
+    //     for (Activité activité : activités) {
+    //         duréeTotale += activité.obtenirTempsÉcoulé();
+    //     }
+    //     return duréeTotale;
+    // }
 
     
 
