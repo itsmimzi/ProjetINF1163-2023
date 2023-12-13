@@ -15,6 +15,8 @@ public class Projet {
     private Float nbrHeuresBudgetDiscipline;
 
     ArrayList<Activite> listeActivites = new ArrayList<>();
+    // A enlever puisque chaque activite contient un employe
+    // TODO
     ArrayList<Employe> listeEmployes = new ArrayList<>();
 
 
@@ -117,5 +119,7 @@ public class Projet {
         }
         return employeR;
     }
+
     
 }
+
