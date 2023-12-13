@@ -15,6 +15,22 @@
 
 public class generateurRapport {
 
+    public void genererRapportProjet(Projet projet) {
+        
+    }
+
+    public void genererRapportGlobal(List<Projet> projets) {
+       
+    }
+
+    public void genererRapportSalaireEmploye(Projet projet, Employe employe) {
+       
+    }
+
+    public void genererRapportTotauxSalaires(List<Employe> employes) {
+       
+    }
+
     
     
 }
