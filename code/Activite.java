@@ -63,7 +63,7 @@ public class Activite {
         return heureFin;
     }
 
-    public void getDiscipline() {
+    public Discipline getDiscipline() {
        return discipline;
     }
 
