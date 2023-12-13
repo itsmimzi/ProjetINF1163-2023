@@ -1,13 +1,22 @@
 import java.util.ArrayList;
 import java.util.Date;
 
-/**
- * La classe Projet représente un projet avec des attributs tels que son identifiant,
- * son nom, sa date de début, sa date de fin, le nombre d'heures budgétaires par discipline,
- * la liste des activités associées au projet, et la liste des employés affectés au projet.
- */
+/*
+ * Classe PROJET : 
+ * 
+ * Un projet doit comprendre un nom, un identifiant unique, 
+ * une date de début et une date de fin, 
+ * un nombre d’heures budgétées pour chacune des disciplines,
+ * enfin une liste d'activités associées au projet.
+ * 
+ * */
+
+
 public class Projet {
-    // Attributs
+    
+    // Variable statique qui suit les affectations d'ID aux projets
+    private static int dernierIdAttribue = 0;
+    
     private int idProjet;
     private String nomProjet;
     private Date dateDebut;
@@ -23,17 +32,16 @@ public class Projet {
     /**
     * Construit un nouvel objet Projet avec les informations spécifiées.
     *
-    * @param idProjet               L'identifiant unique du projet.
-    * @param nomProjet              Le nom du projet.
-    * @param dateDebut              La date de début du projet.
-    * @param dateFin                La date de fin du projet.
-    * @param nbrHeuresBudgetDiscipline Le nombre d'heures budgétaires par discipline pour le projet.
-    * @param listeActivites         Une liste d'objets Activite associés au projet.
-    * @param listeEmployes          Une liste d'objets Employe représentant les employés affectés au projet.
+    * @param nomProjet                      Le nom du projet.
+    * @param dateDebut                      La date de début du projet.
+    * @param dateFin                        La date de fin du projet.
+    * @param nbrHeuresBudgetDiscipline      Le nombre d'heures budgétaires par discipline pour le projet.
+    * @param listeActivites                 Une liste d'objets Activite associés au projet.
+    * @param listeEmployes                  Une liste d'objets Employe représentant les employés affectés au projet.
     */
-    public Projet(int idProjet, String nomProjet, Date dateDebut, Date dateFin, Float nbrHeuresBudgetDiscipline,
+    public Projet(String nomProjet, Date dateDebut, Date dateFin, Float nbrHeuresBudgetDiscipline,
             ArrayList<Activite> listeActivites, ArrayList<Employe> listeEmployes) {
-        this.idProjet = idProjet;
+        this.idProjet = ++dernierIdAttribue;
         this.nomProjet = nomProjet;
         this.dateDebut = dateDebut;
         this.dateFin = dateFin;
