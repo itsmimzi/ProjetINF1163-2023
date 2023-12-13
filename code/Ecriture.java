@@ -6,10 +6,11 @@ import java.io.IOException;
 import java.util.List;
 
 public class Ecriture {
-    private static final String FILE_PATH = "employesData.json";
+    private static final String EMP_FILE_PATH = "employesData.json";
+    private static final String PROJ_FILE_PATH = "projetsData.json";
 
     /**
-     * Écrit les données des employés dans un fichier JSON.
+     * Écrit les données des employés dans le fichier JSON correspondant.
      *
      * @param employes La liste d'objets Employe à écrire.
      */
@@ -30,7 +31,34 @@ public class Ecriture {
             jsonArray.add(jsonEmploye);
         }
 
-        try (FileWriter fileWriter = new FileWriter(FILE_PATH)) {
+        try (FileWriter fileWriter = new FileWriter(EMP_FILE_PATH)) {
+            fileWriter.write(jsonArray.toString());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Écrit les données des projets dans le fichier JSON correspondant.
+     *
+     * @param projets La liste d'objets Projet à écrire.
+     */
+    public void ecrireProjets(List<Projet> projets) {
+        JSONArray jsonArray = new JSONArray();
+        
+        for (Projet projet : projets) {
+            JSONObject jsonProjet = new JSONObject();
+            jsonProjet.put("idProjet", projet.getidProjet());
+            jsonProjet.put("nomProjet", projet.getnomProjet());
+            jsonProjet.put("dateDebut", projet.getDateDebut());
+            jsonProjet.put("dateFin", projet.getDateFin());
+            jsonProjet.put("discipline", projet.getDiscipline());
+            jsonProjet.put("nbrHeuresBudgetDiscipline", projet.getHeuresBudgetDiscipline());
+
+            jsonArray.add(jsonProjet);
+        }
+
+        try (FileWriter fileWriter = new FileWriter(PROJ_FILE_PATH)) {
             fileWriter.write(jsonArray.toString());
         } catch (IOException e) {
             e.printStackTrace();
