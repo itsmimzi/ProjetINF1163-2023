@@ -1,0 +1,36 @@
+[
+    {
+      "idProjet": 1,
+      "nomProjet": "projet1",
+      "dateDebut": "2023-01-15",
+      "dateFin": "2023-02-28",
+      "heuresBudgetDesign1": 20.0,
+      "heuresBudgetDesign2": 15.0,
+      "heuresBudgetImplementation": 30.0,
+      "heuresBudgetTest": 10.0,
+      "heuresBudgetDeploiement": 5.0
+    },
+    {
+      "idProjet": 2,
+      "nomProjet": "projet2",
+      "dateDebut": "2023-02-01",
+      "dateFin": "2023-03-15",
+      "heuresBudgetDesign1": 18.0,
+      "heuresBudgetDesign2": 14.0,
+      "heuresBudgetImplementation": 25.0,
+      "heuresBudgetTest": 15.0,
+      "heuresBudgetDeploiement": 8.0
+    },
+    {
+      "idProjet": 3,
+      "nomProjet": "projet3",
+      "dateDebut": "2023-03-10",
+      "dateFin": "2023-04-30",
+      "heuresBudgetDesign1": 22.0,
+      "heuresBudgetDesign2": 20.0,
+      "heuresBudgetImplementation": 35.0,
+      "heuresBudgetTest": 12.0,
+      "heuresBudgetDeploiement": 6.0
+    }
+  ]
+  
