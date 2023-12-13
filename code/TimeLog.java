@@ -6,6 +6,7 @@ import java.util.Scanner;
 public class TimeLog {
     ArrayList<Employe> listeEmployes = new ArrayList<>();
     ArrayList<Projet> listeProjets = new ArrayList<>();
+    Rapport rapport = new Rapport();
     
 
     public void ajouterEmployer(Employe employe){
@@ -158,6 +159,8 @@ public class TimeLog {
                 demarerActivite(idUtilisateur);
             }else if(choix == 2){
                 terminerActivite(idUtilisateur);
+            }else if(choix == 3){
+                demandeSalaire(idUtilisateur);
             }
             // Ajouter autre choix
             // TODO
@@ -182,5 +185,35 @@ public class TimeLog {
         }
         return null;
     }
-}
 
+    public String demandeSalaire(int idUtilisateur){
+        Date debut;
+        Date fin; 
+        ArrayList<Activite> list = trouverActivitesEmploye(idUtilisateur);
+        
+        return null;
+    }
+
+    public String obtenirSalaireDate(ArrayList<Activite> listeActivite){
+        int  montant =0;
+        for (Activite activite : listeActivite) {
+            activite.calculerHeuresTravaillees();
+        }
+
+        return null;
+    }
+
+    public ArrayList trouverActivitesEmploye(int idUtilisateur){
+        ArrayList listeActivite = new ArrayList<>();
+        for (Projet projet : listeProjets) {
+            for (Activite activite : projet.listeActivites) {
+                if(activite.getEmploye().getID() == idUtilisateur){
+                    listeActivite.add(activite);
+                }
+            }
+        }
+        return listeActivite;
+    }
+
+
+}
