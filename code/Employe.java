@@ -1,103 +1,104 @@
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.Date;
 
-/**
- * La classe Employe représente un employé d'une entreprise avec des informations telles que son identifiant,
- * son prénom, son nom, son numéro d'assurance sociale (NAS), sa date d'embauche, son poste, son taux horaire,
- * ses activités et les projets auxquels il participe.
- */
+
+/*
+ * Classe EMPLOYE : 
+ * 
+ * Un employé doit être caractérisé par un numéro identifiant ID; un nom;
+ * une date d’embauche, et possible date de départ, 
+ * un numéro d’assurance social, 
+ * poste.
+ * un historique de ses taux horaires de base ; 
+ * et un autre taux pour temps supplémentaire;  
+ * 
+ * */
+
+
 public class Employe {
+
+    private static int dernierIdAttribue = 0;
+
     private int idEmploye;
     private String nomEmploye;
-    private int nas;
-    private Date dateEmbauche;
-    private Date dateDepart;
-    private Poste poste;
-    private TauxHoraire tauxHoraire = new TauxHoraire(new ArrayList<>(), new ArrayList<>());
-    private int NPE = 2;
-    private Activite activiteEnCours = null;
-    private ArrayList<Activite> activites = new ArrayList<>();
-    private ArrayList<Projet> projets = new ArrayList<>();
-    
-    
+    private Date embauche;
+    private Date depart;
+    private String NAS; 
+    private String poste;
+
+    private double tauxBase;
+    private double tauxSupp;
+    // Seuil à partir duquel le taux d'heures supplémentaires est appliqué.
+    private static int LIMITE_HEURES_SUPP = 46; 
+
+
     /**
-     * Constructeur pour un employé avec des informations complètes.
-     *
-     * @param idEmploye     L'identifiant unique de l'employé.
-     * @param nomEmploye    Le nom de l'employé.
-     * @param nas           Le numéro d'assurance sociale de l'employé.
-     * @param dateEmbauche  La date d'embauche de l'employé.
-     * @param dateDepart    La date de départ de l'employé (peut être nulle).
-     * @param poste         Le poste occupé par l'employé.
-     * @param tauxHoraire   Le taux horaire de l'employé.
-     * @param activites     La liste des activités liées à l'employé.
-     * @param projets       La liste des projets auxquels l'employé participe.
+     * Constructeur de Classe
+     * 
+     * @param nomEmploye
+     * @param NAS
+     * @param poste
+     * @param embauche
+     * @param depart
+     * @param tauxBase
+     * @param tauxSupp
      */
-    public Employe(int idEmploye, String nomEmploye, int nas, Date dateEmbauche, Date dateDepart,
-            Poste poste, TauxHoraire tauxHoraire, ArrayList<Activite> activites, ArrayList<Projet> projets) {
-        this.idEmploye = idEmploye;
+
+    public Employe(String nomEmploye, String NAS, String poste, Date embauche, Date depart, double tauxBase, double tauxSupp){
+        this.idEmploye = ++dernierIdAttribue;        
         this.nomEmploye = nomEmploye;
-        this.nas = nas;
-        this.dateEmbauche = dateEmbauche;
-        this.dateDepart = dateDepart;
+        this.NAS = NAS;
         this.poste = poste;
-        this.tauxHoraire = tauxHoraire;
-        this.activites = activites;
-        this.projets = projets;
+        this.embauche = embauche;
+        this.depart = depart;
+        this.tauxBase = tauxBase;
+        this.tauxSupp = tauxSupp;
     }
 
-    /**
-     * Constructeur simplifié pour un employé sans informations complètes.
-     *
-     * @param idEmploye     L'identifiant unique de l'employé.
-     * @param nomEmploye    Le nom de l'employé.
-     * @param nas           Le numéro d'assurance sociale de l'employé.
-     * @param dateEmbauche  La date d'embauche de l'employé.
-     * @param poste         Le poste occupé par l'employé.
-     */
-    public Employe(int idEmploye, String nomEmploye, int nas, Date dateEmbauche,Poste poste){
-        this.idEmploye = idEmploye;
-        this.nomEmploye = nomEmploye;
-        this.nas = nas;
-        this.dateEmbauche = dateEmbauche;
-        this.poste = poste;
-        this.dateDepart = null;
-    }
+    /*********************************************************************************************************
+     **************************************** ACCESSEURS & MODIFICATEURS *************************************
+     *********************************************************************************************************/
 
-
-    /**
-     * Modifie le salaire de base de l'employé en ajoutant un nouveau taux horaire de base.
-     *
-     * @param taux Le nouveau taux horaire de base à ajouter.
-     */
-    public void modifierSalaireBase(float taux){
-        tauxHoraire.modifierTauxBaseCourant(taux);
-    }
-    
-    /**
-     * Obtient l'identifiant unique de l'employé.
-     *
-     * @return L'identifiant unique de l'employé.
-     */
-    public int getID(){
+    public int getIdEmploye(){
         return idEmploye;
-    } 
-
-    /**
-     * Obtient le nom de l'employé.
-     *
-     * @return Le nom de l'employé.
-     */
-    public String getNom(){
+    }
+    public String getNomEmploye(){
         return nomEmploye;
     }
-
-    public Activite getActiviteCourant(){
-        return activiteEnCours;
+    public String getPosteEmploye(){
+        return poste;
+    }
+    public String getNAS(){
+        return NAS;
+    }
+    public Date getEmbauche(){
+        return embauche;
+    }
+    public Date getDepart(){
+        return depart;
+    }
+    public double getTauxBase(){
+        return tauxBase;
+    }
+    public double getTauxSupp(){
+        return tauxSupp;
     }
 
-    public void setActiviteCourant(Activite activite){
-        this.activiteEnCours = activite;
+    /**
+     * Calculer le salaire de l'employé.
+     * 
+     * @param heuresTravaillees Total des heures travaillées par l'employé. 
+     * @return Le salaire correspondant aux total des heures travaillées.
+     */
+    public double calculerSalaire(double heuresTravaillees) {
+        double salaire = 0;
+
+        salaire += tauxBase * heuresTravaillees;
+
+        // Si les heures travaillées dépassent une certaine limite, appliquer le taux supplémentaire
+        if (heuresTravaillees > LIMITE_HEURES_SUPP) {
+            double heuresSupplementaires = heuresTravaillees - LIMITE_HEURES_SUPP;
+            salaire += tauxSupp * heuresSupplementaires;
+        }
+        return salaire;
     }
 }
