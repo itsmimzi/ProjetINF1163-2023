@@ -43,7 +43,7 @@ public class Employe {
      * @param tauxSupp
      */
 
-    public Employe(String nomEmploye, String NAS, String poste, Date embauche, Date depart, double tauxBase, double tauxSupp){
+    public Employe(String nomEmploye, int NAS, String poste, Date embauche, Date depart, double tauxBase, double tauxSupp){
         this.idEmploye = ++dernierIdAttribue;        
         this.nomEmploye = nomEmploye;
         this.NAS = NAS;
