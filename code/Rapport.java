@@ -1,5 +1,5 @@
 /*
- * Classe GENERATEUR RAPPORT : 
+ * Classe RAPPORT : 
  * 
  * Permet de générer 
  *    un rapport d’état de chaque projet choisi, 
@@ -13,7 +13,7 @@
  * 
  * */
 
-public class generateurRapport {
+public class Rapport {
 
     public void genererRapportProjet(Projet projet) {
         
@@ -29,6 +29,23 @@ public class generateurRapport {
 
     public void genererRapportTotauxSalaires(List<Employe> employes) {
        
+    }
+
+     public void genererTousLesRapports(List<Projet> projets, List<Employe> employes) {
+         
+        for (Projet projet : projets) {
+            genererRapportProjet(projet);
+        }
+
+        genererRapportGlobal(projets);
+
+        for (Employe employe : employes) {
+            for (Projet projet : employe.getProjetsTravailles()) {
+                genererRapportSalaireEmploye(projet, employe);
+            }
+        }
+         
+        genererRapportTotauxSalaires(employes);
     }
 
     
