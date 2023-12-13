@@ -25,7 +25,6 @@ public class Employe {
      * Constructeur pour un employé avec des informations complètes.
      *
      * @param idEmploye     L'identifiant unique de l'employé.
-     * @param prenomEmploye Le prénom de l'employé.
      * @param nomEmploye    Le nom de l'employé.
      * @param nas           Le numéro d'assurance sociale de l'employé.
      * @param dateEmbauche  La date d'embauche de l'employé.
@@ -35,7 +34,7 @@ public class Employe {
      * @param activites     La liste des activités liées à l'employé.
      * @param projets       La liste des projets auxquels l'employé participe.
      */
-    public Employe(int idEmploye, String prenomEmploye, String nomEmploye, int nas, Date dateEmbauche, Date dateDepart,
+    public Employe(int idEmploye, String nomEmploye, int nas, Date dateEmbauche, Date dateDepart,
             Poste poste, TauxHoraire tauxHoraire, ArrayList<Activite> activites, ArrayList<Projet> projets) {
         this.idEmploye = idEmploye;
         this.nomEmploye = nomEmploye;
@@ -57,7 +56,7 @@ public class Employe {
      * @param dateEmbauche  La date d'embauche de l'employé.
      * @param poste         Le poste occupé par l'employé.
      */
-    public Employe(int idEmploye, String prenomEmploye, String nomEmploye, int nas, Date dateEmbauche,Poste poste){
+    public Employe(int idEmploye, String nomEmploye, int nas, Date dateEmbauche,Poste poste){
         this.idEmploye = idEmploye;
         this.nomEmploye = nomEmploye;
         this.nas = nas;
@@ -99,6 +98,6 @@ public class Employe {
     }
 
     public void setActiviteCourant(Activite activite){
-        activiteEnCours = activite;
+        this.activiteEnCours = activite;
     }
 }
