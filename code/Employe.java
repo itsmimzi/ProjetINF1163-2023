@@ -9,7 +9,6 @@ import java.util.Date;
  */
 public class Employe {
     private int idEmploye;
-    private String prenomEmploye;
     private String nomEmploye;
     private int nas;
     private Date dateEmbauche;
@@ -17,6 +16,7 @@ public class Employe {
     private Poste poste;
     private TauxHoraire tauxHoraire = new TauxHoraire(new ArrayList<>(), new ArrayList<>());
     private int NPE = 2;
+    private Activite activiteEnCours = null;
     private ArrayList<Activite> activites = new ArrayList<>();
     private ArrayList<Projet> projets = new ArrayList<>();
     
@@ -38,7 +38,6 @@ public class Employe {
     public Employe(int idEmploye, String prenomEmploye, String nomEmploye, int nas, Date dateEmbauche, Date dateDepart,
             Poste poste, TauxHoraire tauxHoraire, ArrayList<Activite> activites, ArrayList<Projet> projets) {
         this.idEmploye = idEmploye;
-        this.prenomEmploye = prenomEmploye;
         this.nomEmploye = nomEmploye;
         this.nas = nas;
         this.dateEmbauche = dateEmbauche;
@@ -53,7 +52,6 @@ public class Employe {
      * Constructeur simplifié pour un employé sans informations complètes.
      *
      * @param idEmploye     L'identifiant unique de l'employé.
-     * @param prenomEmploye Le prénom de l'employé.
      * @param nomEmploye    Le nom de l'employé.
      * @param nas           Le numéro d'assurance sociale de l'employé.
      * @param dateEmbauche  La date d'embauche de l'employé.
@@ -61,7 +59,6 @@ public class Employe {
      */
     public Employe(int idEmploye, String prenomEmploye, String nomEmploye, int nas, Date dateEmbauche,Poste poste){
         this.idEmploye = idEmploye;
-        this.prenomEmploye = prenomEmploye;
         this.nomEmploye = nomEmploye;
         this.nas = nas;
         this.dateEmbauche = dateEmbauche;
@@ -95,5 +92,13 @@ public class Employe {
      */
     public String getNom(){
         return nomEmploye;
+    }
+
+    public Activite getActiviteCourant(){
+        return activiteEnCours;
+    }
+
+    public void setActiviteCourant(Activite activite){
+        activiteEnCours = activite;
     }
 }
