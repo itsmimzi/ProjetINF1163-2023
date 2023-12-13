@@ -4,34 +4,76 @@ import java.util.Date;
 import java.util.Scanner;
 
 public class TimeLog {
+    
     ArrayList<Employe> listeEmployes = new ArrayList<>();
     ArrayList<Projet> listeProjets = new ArrayList<>();
     Rapport rapport = new Rapport();
+    private Lecture lecture;
+    private Ecriture ecriture;
+
+    /**
+     * Constructeur de classe
+     */
+    public TimeLog(){
+        this.listeEmployes = new ArrayList<>();
+        this.listeProjets = new ArrayList<>();
+        this.lecture = new Lecture();
+        this.ecriture = new Ecriture();
+        this.chargerDonnees();     // Charger les données existantes depuis le fichier JSON au démarrage du TimeLog
+    }
+
+    /*********************************************************************************************************
+    **************************************** ACCESSEURS & MODIFICATEURS **************************************
+    *********************************************************************************************************/
+
+    public List<Employe> getListeEmployes(){
+        return listeEmployes;
+    }
+
+    public List<Projet> getListeProjets(){
+        return listeProjets;
+    }
+
+    public void setListeEmployes(ArrayList<Employe> newListeEmployes){
+        this.listeEmployes = newListeEmployes;
+        sauvegarderDonnees();
+    }
+
+    public void setListeProjets(ArrayList<Projet> newListeProjets){
+        this.listeProjets = newListeProjets;
+        sauvegarderDonnees();
+    }
     
-
+    /*********************************************************************************************************
+    ***************************************** FONCTIONS DE CLASSE ********************************************
+    *********************************************************************************************************/
+    
+    /**
+     * Ajouter un employé à la liste d'employés.
+     * 
+     * @param employe L'employé à ajouter.
+     */
     public void ajouterEmployer(Employe employe){
-        if(listeEmployes.contains(employe)){
+        if(listeEmployes.contains(employe)){                   // Vérifie si l'employé est déjà présent dans la liste
             System.out.println("Employer existant dans le systeme.");
-        }else{
+        }else{                                                // Ajoute l'employé à la liste
             listeEmployes.add(employe);
+            sauvegarderDonnees();                             // Sauvegarder après chaque modification
         }
     }
-
+    
+    /**
+     * Ajouter un projet à la liste des projets.
+     * 
+     * @param projet Le projet à ajouter
+     */
     public void ajouterProjet(Projet projet){
-        if(listeProjets.contains(projet)){
+        if(listeProjets.contains(projet)){                   // Vérifie si le projet est déjà présent dans la liste
             System.out.println("Projet deja existant dans le systeme.");
-        }else{
+        }else{                                               // Ajoute le projet à la liste
             listeProjets.add(projet);
+            sauvegarderDonnees();                            // Sauvegarder après chaque modification
         }
-    }
-
-    public boolean employeExistant(int idEmploye, String nomEploye){
-        for (Employe employe : listeEmployes) {
-            if(idEmploye == employe.getID() && nomEploye.equals(employe.getNom())){
-                return true;
-            }
-        }
-        return false;
     }
 
     /**
@@ -114,7 +156,7 @@ public class TimeLog {
     * À chaque itération, elle invite l'utilisateur à faire un choix, traite ce choix via la méthode
     * {@link #traitementMenu(int)} et vérifie si l'utilisateur a choisi de quitter le programme.
     */
-    public  void interfaceMenu(){
+    public void interfaceMenu(){
         System.out.println("-- Bienvenue sur le programme TimeLog --\n");
         int choixMenu = -1;
         while (choixMenu != 4) {  
@@ -123,9 +165,6 @@ public class TimeLog {
             traitementMenu(choixMenu);
         }
     }
-
-     
-
 
     public  void traitementMenu(int choixMenu){
         if(choixMenu == 1){
@@ -142,10 +181,26 @@ public class TimeLog {
         System.out.println("\n");
     }
 
+     /**
+     * Vérifie la connexion d'un employé en comparant l'identifiant et le nom fournis avec ceux de la liste des employés.
+     * 
+     * @param idEmploye L'identifiant de l'employé à vérifier.
+     * @param nomEmploye Le nom de l'employé à vérifier.
+     * @return vrai si l'identifiant et le nom correspondent à un employé dans la liste; faux sinon.
+     */
+    public boolean verifierConnexionEmploye(int idEmploye, String nomEmploye){
+        for (Employe employe : listeEmployes) {
+            if(idEmploye == employe.getIdEmploye() && nomEmploye.equals(employe.getNomEmploye())){
+                return true;
+            }
+        }
+        return false;               // Par défaut, si aucun employé correspondant trouvé
+    }
+
     public void menuEmploye(){
         int idUtilisateur = InterfaceMenu.demandeIDUtilisateur();
         String nomUtilisateur = InterfaceMenu.demandeNomUtilisateur();
-        boolean connectionEtablie = employeExistant(idUtilisateur, nomUtilisateur);
+        boolean connectionEtablie = verifierConnexionEmploye(idUtilisateur, nomUtilisateur);
         interfaceMenuEmployeConnecter(idUtilisateur,connectionEtablie);  
     }
 
@@ -213,6 +268,26 @@ public class TimeLog {
             }
         }
         return listeActivite;
+    }
+
+    /**************************************** FONCTIONS UTILITAIRES *****************************************
+    *********************************************************************************************************/
+
+    /**
+     * Charger données Employe et Projet depuis le fichier JSON
+     */
+    private void chargerDonnees() {
+        listeEmployes = new ArrayList<>(lecture.lireEmployes());    
+        listeProjets = new ArrayList<>(lecture.lireProjets());      
+
+    }
+
+    /**
+     * Sauvegarder les données Employe et Projet dans le fichier JSON.
+     */
+    private void sauvegarderDonnees() {
+        ecriture.ecrireEmployes(listeEmployes);      
+        ecriture.ecrireProjets(listeProjets);        
     }
 
 
