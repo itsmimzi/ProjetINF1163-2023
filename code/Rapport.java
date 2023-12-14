@@ -54,10 +54,71 @@ public class Rapport {
 
     public void genererRapportProjet(Projet projet) {
         
+        
     }
 
+    /* Méthode qui donne une vue d'ensemble complète de l'état actuel de tous les projets dans le système.
+    * Cela impliquerait des informations agrégées concernant chaque projet individuel:
+    **Total des heures travaillées sur tous les projets.
+    **Total des heures budgétées sur tous les projets.
+    **Pourcentage global d'avancement basé sur les heures travaillées et les heures budgétées.
+    */
+    
     public void genererRapportGlobal(List<Projet> projets) {
-       
+    // Affichage des rapports sur la console
+    System.out.println("Rapport d'état global :");
+
+    // Total des heures travaillées sur tous les projets
+    double totalHeuresTravaillées = 0;
+
+    // Total des heures budgétées sur tous les projets
+    double totalHeuresBudgetées = 0;
+
+    // Parcours de tous les projets
+    for (Projet projet : projets) {
+        System.out.println("Projet : " + projet.getNom());
+        System.out.println("Date de début : " + projet.getHeureDebut());
+        System.out.println("Date de fin : " + projet.getHeureFin());
+
+        // Ajoutez d'autres informations spécifiques du projet si nécessaire
+
+        System.out.println("Activités associées :");
+
+        // Total des heures travaillées sur le projet
+        double heuresTravailléesProjet = 0;
+
+        // Total des heures budgétées sur le projet
+        double heuresBudgetéesProjet = 0;
+
+        // Parcours de toutes les activités associées au projet
+        for (Activité activité : activités) {
+            if (activité.getProjet().equals(projet)) {
+                System.out.println(" - " + activité.getNom());
+
+                // Ajoutez d'autres détails des activités si nécessaire
+                System.out.println("    Discipline : " + activité.getDiscipline());
+                System.out.println("    Durée : " + activité.obtenirTempsÉcoulé() + " ms");
+
+                // Mise à jour des totaux
+                heuresTravailléesProjet += activité.obtenirTempsÉcoulé();
+                heuresBudgetéesProjet += projet.getHeuresBudgetées();
+            }
+        }
+
+        System.out.println("Total des heures travaillées sur le projet : " + heuresTravailléesProjet);
+        System.out.println("Total des heures budgétées sur le projet : " + heuresBudgetéesProjet);
+
+        // Mise à jour des totaux globaux
+        totalHeuresTravaillées += heuresTravailléesProjet;
+        totalHeuresBudgetées += heuresBudgetéesProjet;
+
+        System.out.println();
+    }
+
+    System.out.println("Total des heures travaillées sur tous les projets : " + totalHeuresTravaillées);
+    System.out.println("Total des heures budgétées sur tous les projets : " + totalHeuresBudgetées);
+}
+
     }
 
     public void genererRapportSalaireEmploye(Projet projet, Employe employe) {
