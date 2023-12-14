@@ -21,11 +21,11 @@ public class Activite {
     private static int dernierIdAttribue = 0;
 
     private int idActivite;
-    private String nomProjet;
+    private Projet projet;
     private LocalDateTime heureDebut;
     private LocalDateTime heureFin;
     private Employe employe; 
-    private Discipline discipline;
+    private String discipline;
 
     /**
      * Constructeur de Classe
@@ -51,8 +51,8 @@ public class Activite {
         return employe;
     }
 
-    public String getNomProjet(){
-        return nomProjet;
+    public Projet getProjet(){
+        return projet;
     }
 
     public LocalDateTime getHeureDebut(){
@@ -63,7 +63,7 @@ public class Activite {
         return heureFin;
     }
 
-    public Discipline getDiscipline() {
+    public String getDiscipline() {
        return discipline;
     }
 
@@ -74,9 +74,9 @@ public class Activite {
      * @param nomProjet Projet auquel est associée l'activité
      * @param discipline Discipline de l'activité
      */
-    public void signalerDebutActivite(String nomProjet, Discipline discipline) {
+    public void signalerDebutActivite(String nomProjet, String discipline) {
         if (heureDebut == null && heureFin == null) {
-            this.nomProjet = nomProjet;
+            this.projet = projet;
             this.discipline = discipline;
             this.heureDebut = LocalDateTime.now();
         } else {
@@ -89,6 +89,7 @@ public class Activite {
      */
     public void signalerFinActivite() {
         if (heureDebut != null && heureFin == null) {
+            
             this.heureFin = LocalDateTime.now();
         } else {
             System.out.println("L'employé n'a pas d'activité en cours.");
@@ -109,5 +110,7 @@ public class Activite {
             return 0;
         }
     }
+
+}
 
 }
