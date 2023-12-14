@@ -24,7 +24,7 @@ public class Employe {
     private Date depart;
     private String NAS; 
     private String poste;
-
+    private Activite activiteEnCours = null;
     private double tauxBase;
     private double tauxSupp;
     // Seuil à partir duquel le taux d'heures supplémentaires est appliqué.
