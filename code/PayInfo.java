@@ -1,4 +1,8 @@
-
+/**
+* cette classe PayInfo est maintenant équipée de constructeurs, getters, setters, 
+** et d'une méthode calculerSalaireBrut pour effectuer un calcul simple du salaire brut 
+** en fonction des heures de base et supplémentaires avec les taux horaires correspondants. 
+**/
 
 import java.util.Date;
 
