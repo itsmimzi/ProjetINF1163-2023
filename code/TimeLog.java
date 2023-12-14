@@ -270,6 +270,8 @@ public class TimeLog {
         return listeActivite;
     }
 
+    
+    /*********************************************************************************************************
     /**************************************** FONCTIONS UTILITAIRES *****************************************
     *********************************************************************************************************/
 
@@ -282,9 +284,9 @@ public class TimeLog {
 
     }
 
-    /**
-     * Sauvegarder les données Employe et Projet dans le fichier JSON.
-     */
+    /***************************************************************************************
+     **********Sauvegarder les données Employe et Projet dans le fichier JSON.*************
+     **************************************************************************************/
     private void sauvegarderDonnees() {
         ecriture.ecrireEmployes(listeEmployes);      
         ecriture.ecrireProjets(listeProjets);        
