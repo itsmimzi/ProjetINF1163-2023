@@ -15,6 +15,14 @@
 
 public class Rapport {
 
+       // Attribut pour stocker les déductions par employé
+    private Map<Integer, Float> deductions;
+
+      // Constructeur
+    public Rapport() {
+        deductions = new HashMap<>();
+    }
+
     //     private String nomProjet;
     // private List<Activité> activités;
 
@@ -146,6 +154,14 @@ public class Rapport {
         genererRapportTotauxSalaires(employes);
     }
 
+    /*La méthode ajouterDeduction ajoute une déduction à la map.
+   * Méthode pour ajouter une déduction pour un employé
+   * Elle est utilisé dans la classe payrollSystem,  
+   * plus précisement dans la méthode  public Rapport deductionRapport(List<PayInfo> payInfos)
+    */
+    public void ajouterDeduction(int idEmploye, float deduction) {
+        deductions.put(idEmploye, deduction);
+    }
     
     
 }
