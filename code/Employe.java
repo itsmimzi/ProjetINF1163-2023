@@ -1,16 +1,18 @@
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 
 /*
- * Classe EMPLOYE : 
- * 
+ * Classe EMPLOYE :
+ *
  * Un employé doit être caractérisé par un numéro identifiant ID; un nom;
- * une date d’embauche, et possible date de départ, 
- * un numéro d’assurance social, 
+ * une date d’embauche, et possible date de départ,
+ * un numéro d’assurance social,
  * poste.
- * un historique de ses taux horaires de base ; 
- * et un autre taux pour temps supplémentaire;  
- * 
+ * un historique de ses taux horaires de base ;
+ * et un autre taux pour temps supplémentaire;
+ *
  * */
 
 
@@ -22,18 +24,19 @@ public class Employe {
     private String nomEmploye;
     private Date embauche;
     private Date depart;
-    private String NAS; 
+    private int NAS;
     private String poste;
-    private Activite activiteEnCours = null;
     private double tauxBase;
     private double tauxSupp;
+    private Activite activiteEnCours = null;
     // Seuil à partir duquel le taux d'heures supplémentaires est appliqué.
-    private static int LIMITE_HEURES_SUPP = 46; 
+    private static int LIMITE_HEURES_SUPP = 46;
+    private List<Activite> activites;
 
 
     /**
      * Constructeur de Classe
-     * 
+     *
      * @param nomEmploye
      * @param NAS
      * @param poste
@@ -44,7 +47,8 @@ public class Employe {
      */
 
     public Employe(String nomEmploye, int NAS, String poste, Date embauche, Date depart, double tauxBase, double tauxSupp){
-        this.idEmploye = ++dernierIdAttribue;        
+
+        this.idEmploye = ++dernierIdAttribue;
         this.nomEmploye = nomEmploye;
         this.NAS = NAS;
         this.poste = poste;
@@ -52,6 +56,7 @@ public class Employe {
         this.depart = depart;
         this.tauxBase = tauxBase;
         this.tauxSupp = tauxSupp;
+        this.activites = new ArrayList<>();
     }
 
     /*********************************************************************************************************
@@ -67,7 +72,7 @@ public class Employe {
     public String getPosteEmploye(){
         return poste;
     }
-    public String getNAS(){
+    public int getNAS(){
         return NAS;
     }
     public Date getEmbauche(){
@@ -82,10 +87,20 @@ public class Employe {
     public double getTauxSupp(){
         return tauxSupp;
     }
+    public List<Activite> getActivites(){
+        return activites;
+    }
+    public Activite getActiviteCourant(){
+        return activiteEnCours;
+    }
 
-    /** 
+    public void setActiviteCourant(Activite activite){
+        activiteEnCours = activite;
+    }
+
+    /**
      * Obtenir la liste des projets sur lesquels l'employé a travaillé.
-     * 
+     *
      * @return Une liste de projets associés à l'employé.
      */
     public List<Projet> getProjetsTravailles(){
@@ -103,8 +118,8 @@ public class Employe {
 
     /**
      * Calculer le salaire de l'employé.
-     * 
-     * @param heuresTravaillees Total des heures travaillées par l'employé. 
+     *
+     * @param heuresTravaillees Total des heures travaillées par l'employé.
      * @return Le salaire correspondant aux total des heures travaillées.
      */
     public double calculerSalaire(double heuresTravaillees) {
@@ -119,4 +134,9 @@ public class Employe {
         }
         return salaire;
     }
+
+
+
+
 }
+
