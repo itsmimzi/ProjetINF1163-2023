@@ -90,14 +90,14 @@ public class Employe {
     public List<Activite> getActivites(){
         return activites;
     }
-    public Activite getActiviteCourant(){
-        return activiteEnCours;
-    }
 
     public void setActiviteCourant(Activite activite){
         activiteEnCours = activite;
     }
 
+    public Activite getActiviteCourant(){
+        return activiteEnCours;
+    }
     /**
      * Obtenir la liste des projets sur lesquels l'employé a travaillé.
      *
