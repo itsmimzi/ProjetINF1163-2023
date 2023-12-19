@@ -1,26 +1,16 @@
-import java.util.Date;
+// import java.util.Date;
 
-public class Admin extends Employe {
+// public class Admin extends Employe {
 
     
 
-    /*
-     * constructeur de classe
-     */
-    public Admin(String username, String password) {
-        super(
-            int idE; 
-            String nomE; 
-            String NAS; 
-            String poste; 
-            Date embauche; 
-            Date depart; 
-            double tauxBase; 
-            double tauxSupp;
-            ));
+//     /*
+//      * constructeur de classe
+//      */
+//     // public Admin(String username, String password) {
         
-    }
+//     // }
 
-    // Ajout méthodes spécifiques à l'admin
-}
+//     // Ajout méthodes spécifiques à l'admin
+// }
  
