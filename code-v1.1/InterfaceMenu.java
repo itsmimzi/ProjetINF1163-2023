@@ -22,8 +22,18 @@ public class InterfaceMenu {
     public static void menuAdminConnecter(){
        System.out.println("\n\nVeuillez entrer voitre choix: ");
         System.out.println("1. Modification de mot de passe personnel.");
+        System.out.println("----------Modification Employe------------");
         System.out.println("2. Assigner Projet.");
-        System.out.println("3. Modifier parametre.\n"); 
+        System.out.println("3. Modifier NPE pour un employer."); 
+        System.out.println("4. Modifier Nom employe.");
+        System.out.println("5. Modifier Date depart d'un employe.");
+        System.out.println("6. Modifier Taux de base.");
+        System.out.println("7. Modifier le Poste d'un employer.");
+        System.out.println("----------Modification Projet------------");
+        System.out.println("8. Modifier Nom de projet.");
+        System.out.println("9. Modifier heure budgeter projet.");
+        System.out.println("10. Ajouter date de fin de projet.");
+        System.out.println("\n");
     }
 
     /**
@@ -194,14 +204,71 @@ public class InterfaceMenu {
         return obtenirString();
     }
 
+    /**
+    * Demande et obtient le taux de base pour un employé.
+    *
+    * Cette méthode interagit avec l'utilisateur pour demander la saisie d'un taux de base. Elle 
+    * utilise la méthode 'obtenirDouble' pour obtenir et retourner la valeur saisie par l'utilisateur.
+    * Cette méthode est supposée lire une entrée utilisateur et la convertir en un double.
+    *
+    * @return Le taux de base saisi par l'utilisateur, sous forme de double.
+    *
+    * Note: Cette méthode suppose que 'obtenirDouble' gère correctement les erreurs de saisie et 
+    * les conversions de type.
+    */
+    public static double demandeTauxBaseEmploye(){
+        System.out.println("Veuillez entrer le taux: ");
+        return obtenirDouble();
+    }
 
+    /**
+    * Demande et obtient le nombre d'heure budgeter pour un projet.
+    *
+    * @return Le nombre d'heure.
+    */
+    public static float demandeNbHeureBudget(){
+        System.out.println("Veuillez entrer un nombre d'heure: ");
+        return obtenirFloat();
+    }
+
+
+    /**
+    * Lit et retourne une chaîne de caractères saisie par l'utilisateur.
+    *
+    * @return La chaîne de caractères saisie par l'utilisateur.
+    */
     private static String obtenirString(){
         return new Scanner(System.in).nextLine();
     }
 
+    /**
+    * Lit et retourne un entier saisi par l'utilisateur.
+    *
+    * @return L'entier saisi par l'utilisateur.
+    * @throws NumberFormatException si la chaîne de caractères saisie ne peut pas être convertie en entier.
+    */
     private static int obtenirInt(){
         return Integer.parseInt(new Scanner(System.in).nextLine());
     }
+
+    /**
+    * Lit et retourne un nombre à virgule flottante (double) saisi par l'utilisateur.
+    *
+    * @return Le nombre à virgule flottante (double) saisi par l'utilisateur.
+    * @throws NumberFormatException si la chaîne de caractères saisie ne peut pas être convertie en double.
+    */
+    private static double obtenirDouble(){
+        return Double.parseDouble(new Scanner(System.in).nextLine());
+    }
     
+    /**
+    * Lit et retourne un nombre à virgule flottante (float) saisi par l'utilisateur.
+    *
+    * @return Le nombre à virgule flottante (float) saisi par l'utilisateur.
+    * @throws NumberFormatException si la chaîne de caractères saisie ne peut pas être convertie en double.
+    */
+    private static float obtenirFloat(){
+        return Float.parseFloat(new Scanner(System.in).nextLine());
+    }
 
 }
