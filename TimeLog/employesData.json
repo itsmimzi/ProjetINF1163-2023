@@ -1,8 +1,9 @@
 [
     {
       "id": 1,
-      "nom": "employe1",
-      "historiqueTauxHoraireBase": [20.0, 22.0, 25.0],
+      "nom": "employé1",
+      "TauxBase": 20.0,
+      "tauxSupp": 30.0,
       "dateEmbauche": "2023-01-01",
       "dateDepart": null,
       "NAS": "123-456-789",
@@ -10,31 +11,23 @@
     },
     {
       "id": 2,
-      "nom": "employe2",
-      "historiqueTauxHoraireBase": [18.0, 20.0, 23.0],
-      "dateEmbauche": "2023-02-01",
+      "nom": "employé2",
+      "TauxBase": 18.0,
+      "TauxSupp": 28.0,
+      "dateEmbauche": "2022-01-01",
       "dateDepart": null,
       "NAS": "987-654-321",
       "poste": "Testeur"
     },
     {
       "id": 3,
-      "nom": "employe3",
-      "historiqueTauxHoraireBase": [25.0, 28.0, 30.0],
+      "nom": "employé3",
+      "TauxBase": 28.0,
+      "TauxSupp": 35.0,
       "dateEmbauche": "2023-03-03",
       "dateDepart": null,
       "NAS": "456-789-012",
       "poste": "Architecte"
-    },
-    {
-      "id": 4,
-      "nom": "employe4",
-      "historiqueTauxHoraireBase": [18.0, 20.0],
-      "tauxHoraireSupplementaire": 35.0,
-      "dateEmbauche": "2022-07-01",
-      "dateDepart": null,
-      "numAssuranceSocial": "456-789-012",
-      "poste": "Testeur"
     }
   ]
   
