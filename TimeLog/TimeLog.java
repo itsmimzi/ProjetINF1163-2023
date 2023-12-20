@@ -1,17 +1,25 @@
-import java.util.*;
+import java.util.Scanner;
+import java.util.List;
+import java.util.Map;
+import java.util.ArrayList;
 
 public class TimeLog {
 
     private List<Projet> projets;
     private List<Employe> employes;
     private Admin admin;
+    private PayrollSystem payrollSystem;
 
     public TimeLog() {
         // Initialisation des listes de projets et d'employés
         projets = new ArrayList<>();
         employes = new ArrayList<>();
-        // Initialisation de l'admin
-        admin = new Admin("admin", "admin");
+        
+        // Initialisation du système de paie
+        payrollSystem = new PayrollSystem();
+        
+     // Initialisation de l'admin
+        admin = new Admin("admin","admin");
     }
 
     public void run() {
@@ -21,7 +29,9 @@ public class TimeLog {
             System.out.println("1. Rapport d'heures travaillées par projet");
             System.out.println("2. Rapport d'heures travaillées par employé");
             System.out.println("3. Calcul des salaires");
-            System.out.println("4. Quitter");
+            System.out.println("4. Générer le rapport de déduction");
+            System.out.println("5. Imprimer les talons de paie");
+            System.out.println("6. Quitter");
 
             System.out.print("Choisissez une option : ");
             int choix = scanner.nextInt();
@@ -37,6 +47,12 @@ public class TimeLog {
                     calculerSalaire();
                     break;
                 case 4:
+                    genererRapportDeduction();
+                    break;
+                case 5:
+                    imprimerTalonsPaie();
+                    break;
+                case 6:
                     System.out.println("Au revoir !");
                     scanner.close();
                     System.exit(0);
@@ -49,37 +65,43 @@ public class TimeLog {
     private void genererRapportHeureProjet() {
         // Implémentez la logique pour générer le rapport par projet
         // ...
-
         System.out.println("Rapport généré par projet.");
     }
 
     private void genererRapportHeureEmploye() {
         // Implémentez la logique pour générer le rapport par employé
         // ...
-
         System.out.println("Rapport généré par employé.");
     }
 
-    public void calculerSalaire() {
+    private void calculerSalaire() {
         for (Employe employe : employes) {
             double totalSalaire = 0;
 
-            for (Map<String, Double> disciplineWork : employe.getProjectWork().values()) {
-                for (double hoursWorked : disciplineWork.values()) {
-                    // Supposons un taux horaire de 10$ pour simplifier
-                    double hourlyRate = 10.0;
-                    totalSalaire += hoursWorked * hourlyRate;
-                }
+            for (Map.Entry<String, Double> entry : ((Map<String, Double>) employe.getProjetsTravailles()).entrySet()) {
+                String discipline = entry.getKey();
+                double hoursWorked = entry.getValue();
+
+
+                // Utilisation de PayrollSystem pour calculer le salaire net
+                double salaireNet = payrollSystem.netFromBrute(employe.getIdEmploye(), hoursWorked);
+                totalSalaire += salaireNet;
             }
 
-            System.out.println("Salaire brut pour l'employé " + employe.getUsername() + ": $" + totalSalary);
+            System.out.println("Salaire total pour l'employé " + employe.getNomEmploye() + ": $" + totalSalaire);
         }
     }
 
+    private void genererRapportDeduction() {
+
+    }
+
+    private void imprimerTalonsPaie() {
+ 
+    }
 
     public static void main(String[] args) {
         TimeLog timeLog = new TimeLog();
         timeLog.run();
     }
-
 }
