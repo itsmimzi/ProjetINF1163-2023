@@ -16,5 +16,5 @@ A partir du répertoire du projet directement :
 
 Exécution à partie du fichier .exe 
 
-    Double clic sur le fichier program.exe 
+    Double clic sur le fichier program.exe  
     
