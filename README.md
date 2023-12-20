@@ -14,6 +14,7 @@ A partir du répertoire du projet directement :
 
     Le point de d'entrée du programme est la fonction main () du fichier Program.java. 
 
-Ou simplement executer le fichier program.exe dans le fichier principal.
-    Program.exe
+Exécution à partie du fichier .exe 
+
+    Double clic sur le fichier program.exe 
     
